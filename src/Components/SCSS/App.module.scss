@@ -21,6 +21,10 @@ a {
 
   .Login .input {
     margin: 15px 0;
+    span {
+      display: inline-block;
+      min-width: 100px;
+    }
   }
 
   .User {
