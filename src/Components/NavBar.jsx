@@ -26,7 +26,7 @@ const NavBar = ({ auth, logout }) => {
       </NavLink>
       <Button
         variant="contained"
-        color="primary"
+        color="secondary"
         size="small"
         onClick={onLogout}
         className={styles.logOut}

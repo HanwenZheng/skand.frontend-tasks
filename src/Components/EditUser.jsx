@@ -8,6 +8,7 @@ import { getUser, editUser } from "../Redux/Action/user";
 
 import Button from "@material-ui/core/Button";
 import styles from "./SCSS/App.module.scss";
+import { Link } from "react-router-dom";
 
 const UserSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -83,9 +84,14 @@ const EditUser = ({ user, getUser, editUser, match, history }) => {
               Active <Field type="checkbox" name="active" />
             </label>
           </div>
-
+          <Link to="/home" style={{ color: "white" }}>
+            <Button variant="contained" color="primary">
+              Go Back
+            </Button>
+          </Link>
+          <span> </span>
           <Button variant="contained" color="secondary" type="submit">
-            Save
+            Save Profile
           </Button>
         </Form>
       )}

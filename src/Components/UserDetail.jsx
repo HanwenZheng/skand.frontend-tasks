@@ -60,8 +60,8 @@ const UserDetail = ({ match, users, getUsers }) => {
         </Fragment>
       )}
       <Link to="/home" style={{ color: "white" }}>
-        <Button variant="contained" color="secondary">
-          Back to home
+        <Button variant="contained" color="primary">
+          Go Back
         </Button>
       </Link>
     </div>
