@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 const User = ({ match, users }) => {
   const id = match.params.id;
   const user = users.find((user) => user.id === id);
-  // if (!user) return <Redirect to="/home" />;
+  if (users.length && !user) return <Redirect to="/home" />;
 
   return (
     <Fragment>
