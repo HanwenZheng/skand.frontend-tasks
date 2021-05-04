@@ -7,18 +7,22 @@ import Button from "@material-ui/core/Button";
 const User = ({ match, users }) => {
   const id = match.params.id;
   const user = users.find((user) => user.id === id);
-  if (!user) return <Redirect to="/home" />;
+  // if (!user) return <Redirect to="/home" />;
 
   return (
     <Fragment>
       <h1>User Details</h1>
-      <p>Email: {user.email}</p>
-      <p>Username: {user.slack_username}</p>
-      <p>First Name: {user.first_name}</p>
-      <p>Last Name: {user.last_name}</p>
-      <p>Total Jobs: {user.jobs_count}</p>
-      <p>Status: {user.active ? "Active" : "Inactive"}</p>
-      <p>ID: {user.id}</p>
+      {user && (
+        <Fragment>
+          <p>Email: {user.email}</p>
+          <p>Username: {user.slack_username}</p>
+          <p>First Name: {user.first_name}</p>
+          <p>Last Name: {user.last_name}</p>
+          <p>Total Jobs: {user.jobs_count}</p>
+          <p>Status: {user.active ? "Active" : "Inactive"}</p>
+          <p>ID: {user.id}</p>
+        </Fragment>
+      )}
       <Link to="/home" style={{ color: "white" }}>
         <Button variant="contained" color="secondary">
           Back to home

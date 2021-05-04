@@ -14,12 +14,13 @@ import { getUsers } from "./Redux/Action/user";
 
 import styles from "./Components/SCSS/App.module.scss";
 
-const App = ({ auth, user, setInitHeaders, getUsers }) => {
+const App = ({ auth, users, setInitHeaders, getUsers }) => {
   useEffect(() => {
     setInitHeaders(localStorage.token);
-    if (!user) {
-      getUsers();
-    }
+    !users.length &&
+      setTimeout(() => {
+        getUsers();
+      }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,7 +40,7 @@ const App = ({ auth, user, setInitHeaders, getUsers }) => {
 
 const mapStateToProps = ({ auth, user }) => ({
   auth,
-  user,
+  users: user.users,
 });
 
 export default connect(mapStateToProps, { setInitHeaders, getUsers })(App);

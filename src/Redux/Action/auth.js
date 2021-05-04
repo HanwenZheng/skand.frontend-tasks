@@ -19,6 +19,7 @@ export const login = ({ email, password }) => async (dispatch) => {
       payload: res.headers.authorization,
     });
   } catch (err) {
+    console.error(err.message);
     delete axios.defaults.headers.common["authorization"];
     toast.error("Invalid credentials!");
     dispatch({
