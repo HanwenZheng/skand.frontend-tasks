@@ -8,11 +8,11 @@ const Landing = (props) => {
     <div>
       <h1>Landing</h1>
       <h3>Welcome to User Viewer!</h3>
-      <Button variant="contained" size="large" color="primary">
-        <Link to="/login" style={{ color: "white" }}>
+      <Link to="/login" style={{ color: "white" }}>
+        <Button variant="contained" size="large" color="primary">
           Get Started
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </div>
   );
 };

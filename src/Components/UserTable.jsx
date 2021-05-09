@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { deleteUser } from "../Redux/Action/user";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -140,7 +141,11 @@ const UserTable = ({ users, deleteUser }) => {
                   color="primary"
                   aria-label="contained primary button group"
                 >
-                  <Button>View</Button>
+                  <Button>
+                    <Link to={`/home/${row.id}`} style={{ color: "white" }}>
+                      View
+                    </Link>
+                  </Button>
                   <Button>Edit</Button>
                   <Button onClick={(e) => deleteUser(row.id)}>Delete</Button>
                 </ButtonGroup>

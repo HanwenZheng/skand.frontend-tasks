@@ -1,11 +1,28 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { Link, Redirect, withRouter } from "react-router-dom";
 
-const User = ({ match }) => {
+import Button from "@material-ui/core/Button";
+
+const User = ({ match, users }) => {
+  const id = match.params.id;
+  const user = users.find((user) => user.id === id);
+  if (!user) return <Redirect to="/home" />;
+  console.log(user);
   return (
-    <div>
-      <h1>{`User: ${match.params.id}`}</h1>
-    </div>
+    <Fragment>
+      <h1>{`User: ${id}`}</h1>
+      <Link to="/home" style={{ color: "white" }}>
+        <Button variant="contained" color="primary">
+          Back to home
+        </Button>
+      </Link>
+    </Fragment>
   );
 };
 
-export default User;
+const mapStateToProps = ({ user }) => ({
+  users: user.users,
+});
+
+export default connect(mapStateToProps)(withRouter(User));

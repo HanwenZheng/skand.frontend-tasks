@@ -27,7 +27,7 @@ const App = ({ auth, setInitHeaders }) => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/home" component={Home} />
-        <PrivateRoute path="/home/:id" children={User} />
+        <PrivateRoute path="/home/:id" component={User} />
       </Switch>
     </div>
   );
