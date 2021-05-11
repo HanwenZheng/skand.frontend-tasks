@@ -10,12 +10,16 @@ import NavBar from "./Components/NavBar";
 import User from "./Components/User";
 import { setInitHeaders } from "./Redux/Action/auth";
 import { connect } from "react-redux";
+import { getUsers } from "./Redux/Action/user";
 
 import styles from "./Components/SCSS/App.module.scss";
 
-const App = ({ auth, setInitHeaders }) => {
+const App = ({ auth, user, setInitHeaders, getUsers }) => {
   useEffect(() => {
     setInitHeaders(localStorage.token);
+    if (!user) {
+      getUsers();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,8 +37,9 @@ const App = ({ auth, setInitHeaders }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth, user }) => ({
   auth,
+  user,
 });
 
-export default connect(mapStateToProps, { setInitHeaders })(App);
+export default connect(mapStateToProps, { setInitHeaders, getUsers })(App);
