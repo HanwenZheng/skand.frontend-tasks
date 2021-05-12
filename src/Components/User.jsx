@@ -13,7 +13,7 @@ const User = ({ match, users }) => {
     <Fragment>
       <h1>{`User: ${id}`}</h1>
       <Link to="/home" style={{ color: "white" }}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="secondary">
           Back to home
         </Button>
       </Link>
