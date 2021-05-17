@@ -8,9 +8,12 @@ import styles from "./SCSS/App.module.scss";
 
 const User = ({ match, users }) => {
   const id = match.params.id;
-  const user = users.find((user) => user.id === id);
+  let user = users.find((user) => user.id === id);
   if (users.length && !user) return <Redirect to="/home" />;
 
+  const { last_name, first_name, jobs_count, id: id1, email, slack_username, active } = user
+    ? user
+    : {};
   return (
     <div className={styles.User}>
       <h1>User Details</h1>
@@ -18,33 +21,33 @@ const User = ({ match, users }) => {
         <Fragment>
           <p>
             <span>Email: </span>
-            {user.email}
+            {email}
           </p>
           <p>
             <span>Username: </span>
-            {user.slack_username}
+            {slack_username}
           </p>
           <div />
           <p>
             <span>First Name: </span>
-            {user.first_name}
+            {first_name}
           </p>
           <p>
             <span>Last Name: </span>
-            {user.last_name}
+            {last_name}
           </p>
           <div />
           <p>
             <span>Total Jobs: </span>
-            {user.jobs_count}
+            {jobs_count}
           </p>
           <p>
             <span>Status: </span>
-            {user.active ? "Active" : "Inactive"}
+            {active ? "Active" : "Inactive"}
           </p>
           <p>
             <span>ID: </span>
-            {user.id}
+            {id1}
           </p>
         </Fragment>
       )}
