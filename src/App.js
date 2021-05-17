@@ -11,6 +11,7 @@ import User from "./Components/User";
 import { setInitHeaders } from "./Redux/Action/auth";
 import { connect } from "react-redux";
 import { getUsers } from "./Redux/Action/user";
+import EditUser from "./Components/EditUser";
 
 import styles from "./Components/SCSS/App.module.scss";
 
@@ -32,7 +33,8 @@ const App = ({ auth, users, setInitHeaders, getUsers }) => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/home" component={Home} />
-        <PrivateRoute path="/home/:id" component={User} />
+        <PrivateRoute exact path="/home/:id" component={User} />
+        <PrivateRoute exact path="/home/:id/edit" component={EditUser} />
       </Switch>
     </div>
   );
