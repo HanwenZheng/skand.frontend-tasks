@@ -9,7 +9,6 @@ const User = ({ match, users }) => {
   const user = users.find((user) => user.id === id);
   if (!user) return <Redirect to="/home" />;
 
-  console.log(user);
   return (
     <Fragment>
       <h1>{`User: ${id}`}</h1>
