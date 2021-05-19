@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getUsers } from "../Redux/Action/user";
-import UserTable from "./UserTable";
+import UserTable from "./UserList";
 
 import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";

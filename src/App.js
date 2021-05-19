@@ -7,7 +7,7 @@ import Login from "./Components/Login";
 import Home from "./Components/Home";
 import Landing from "./Components/Landing";
 import NavBar from "./Components/NavBar";
-import User from "./Components/User";
+import User from "./Components/UserDetail";
 import { setInitHeaders } from "./Redux/Action/auth";
 import { connect } from "react-redux";
 import { getUsers } from "./Redux/Action/user";

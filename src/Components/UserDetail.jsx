@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 
 import styles from "./SCSS/App.module.scss";
 
-const User = ({ match, users }) => {
+const UserDetail = ({ match, users }) => {
   const id = match.params.id;
   let user = users.find((user) => user.id === id);
   if (users.length && !user) return <Redirect to="/home" />;
@@ -64,4 +64,4 @@ const mapStateToProps = ({ user }) => ({
   users: user.users,
 });
 
-export default connect(mapStateToProps)(withRouter(User));
+export default connect(mapStateToProps)(withRouter(UserDetail));

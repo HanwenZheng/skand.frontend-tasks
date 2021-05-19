@@ -21,7 +21,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 
-const UserTable = ({ users, deleteUser }) => {
+const UserList = ({ users, deleteUser }) => {
   const Styles = makeStyles((theme) => ({
     table: {
       minWidth: 650,
@@ -146,7 +146,11 @@ const UserTable = ({ users, deleteUser }) => {
                       View
                     </Link>
                   </Button>
-                  <Button>Edit</Button>
+                  <Button>
+                    <Link to={`/home/${row.id}/edit`} style={{ color: "white" }}>
+                      Edit
+                    </Link>
+                  </Button>
                   <Button onClick={(e) => deleteUser(row.id)}>Delete</Button>
                 </ButtonGroup>
               </TableCell>
@@ -176,4 +180,4 @@ const UserTable = ({ users, deleteUser }) => {
   );
 };
 
-export default connect(null, { deleteUser })(UserTable);
+export default connect(null, { deleteUser })(UserList);

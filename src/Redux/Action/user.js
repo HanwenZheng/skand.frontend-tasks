@@ -18,10 +18,9 @@ export const getUsers = () => async (dispatch) => {
 export const getUser = (id) => async (dispatch) => {
   try {
     const res = await axios.get(proxy + `/users/${id}`);
-    console.log(res);
     dispatch({
       type: GET_USER,
-      payload: res,
+      payload: res.data.users,
     });
   } catch (err) {
     console.error(err.message);
