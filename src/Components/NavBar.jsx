@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../Redux/Action/auth";
-import Button from "@material-ui/core/Button";
+import { NavLink } from "react-router-dom";
 
+import { logout } from "../Redux/Action/auth";
+
+import Button from "@material-ui/core/Button";
 import styles from "./SCSS/App.module.scss";
 
 const NavBar = ({ auth, logout }) => {

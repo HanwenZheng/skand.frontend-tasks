@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getUser, editUser } from "../Redux/Action/user";
-import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+
+import { getUser, editUser } from "../Redux/Action/user";
+
 import Button from "@material-ui/core/Button";
 import styles from "./SCSS/App.module.scss";
 

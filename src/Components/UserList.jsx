@@ -3,26 +3,29 @@ import { deleteUser } from "../Redux/Action/user";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import TableFooter from "@material-ui/core/TableFooter";
-import TablePagination from "@material-ui/core/TablePagination";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  makeStyles,
+  useTheme,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  ButtonGroup,
+  TableFooter,
+  TablePagination,
+  IconButton,
+} from "@material-ui/core";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 
 const UserList = ({ users, deleteUser }) => {
-  const Styles = makeStyles((theme) => ({
+  const Styles = makeStyles(() => ({
     table: {
       minWidth: 650,
     },
@@ -151,7 +154,7 @@ const UserList = ({ users, deleteUser }) => {
                       Edit
                     </Link>
                   </Button>
-                  <Button onClick={(e) => deleteUser(row.id)}>Delete</Button>
+                  <Button onClick={() => deleteUser(row.id)}>Delete</Button>
                 </ButtonGroup>
               </TableCell>
             </TableRow>

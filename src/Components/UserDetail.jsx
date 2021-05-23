@@ -1,7 +1,9 @@
 import React, { Fragment, useEffect } from "react";
-import { connect } from "react-redux";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
 import { getUsers } from "../Redux/Action/user";
+
 import Button from "@material-ui/core/Button";
 import styles from "./SCSS/App.module.scss";
 

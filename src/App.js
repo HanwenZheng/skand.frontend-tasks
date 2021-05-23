@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import { Route, Switch } from "react-router-dom";
 
-import PrivateRoute from "./Components/PrivateRoute";
+import NavBar from "./Components/NavBar";
+import Landing from "./Components/Landing";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
-import Landing from "./Components/Landing";
-import NavBar from "./Components/NavBar";
 import User from "./Components/UserDetail";
-import { setInitHeaders } from "./Redux/Action/auth";
-import { connect } from "react-redux";
 import EditUser from "./Components/EditUser";
+import { setInitHeaders } from "./Redux/Action/auth";
+import PrivateRoute from "./Components/PrivateRoute";
+
 import styles from "./Components/SCSS/App.module.scss";
 
 const App = ({ setInitHeaders }) => {

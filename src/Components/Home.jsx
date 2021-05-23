@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getUsers } from "../Redux/Action/user";
-import UserTable from "./UserList";
 
-import TextField from "@material-ui/core/TextField";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
+import UserTable from "./UserList";
+import { getUsers } from "../Redux/Action/user";
+
+import { TextField, Radio, RadioGroup, FormControlLabel, FormControl } from "@material-ui/core";
 
 const Home = ({ users, getUsers }) => {
   useEffect(() => {
