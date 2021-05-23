@@ -18,8 +18,12 @@ const user = (state = initialState, action) => {
         ...state,
         editUser: payload,
       };
-    case DELETE_USER:
     case EDIT_USER:
+      return {
+        ...state,
+        editUser: null,
+      };
+    case DELETE_USER:
     default:
       return state;
   }

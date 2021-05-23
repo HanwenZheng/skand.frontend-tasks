@@ -1,12 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect, withRouter } from "react-router-dom";
-
+import { getUsers } from "../Redux/Action/user";
 import Button from "@material-ui/core/Button";
-
 import styles from "./SCSS/App.module.scss";
 
-const UserDetail = ({ match, users }) => {
+const UserDetail = ({ match, users, getUsers }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      getUsers();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const id = match.params.id;
   let user = users.find((user) => user.id === id);
   if (users.length && !user) return <Redirect to="/home" />;
@@ -64,4 +70,4 @@ const mapStateToProps = ({ user }) => ({
   users: user.users,
 });
 
-export default connect(mapStateToProps)(withRouter(UserDetail));
+export default connect(mapStateToProps, { getUsers })(withRouter(UserDetail));

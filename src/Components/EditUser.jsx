@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getUser, editUser } from "../Redux/Action/user";
@@ -15,7 +15,7 @@ const UserSchema = Yup.object().shape({
   slack_username: Yup.string().required("Required"),
 });
 
-const EditUser = ({ user, getUser, editUser, match }) => {
+const EditUser = ({ user, getUser, editUser, match, history }) => {
   useEffect(() => {
     setTimeout(() => {
       getUser(match.params.id);
@@ -35,8 +35,15 @@ const EditUser = ({ user, getUser, editUser, match }) => {
       }}
       validationSchema={UserSchema}
       onSubmit={({ email, first_name, last_name, jobs_count, slack_username, active }) => {
-        const cu = { email, first_name, last_name, jobs_count, slack_username, active };
-        console.log(cu);
+        editUser(match.params.id, {
+          email,
+          first_name,
+          last_name,
+          jobs_count,
+          slack_username,
+          active,
+        });
+        history.push("/home");
       }}
     >
       {({ errors, touched }) => (

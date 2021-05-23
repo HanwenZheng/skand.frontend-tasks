@@ -27,13 +27,18 @@ export const getUser = (id) => async (dispatch) => {
   }
 };
 
-export const editUser = (id) => async (dispatch) => {
+export const editUser = (id, edit) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify(edit);
   try {
-    await axios.patch(proxy + `/users/${id}`);
+    await axios.patch(proxy + `/users/${id}`, body, config);
     dispatch({
       type: EDIT_USER,
     });
-    dispatch(getUsers());
   } catch (err) {
     console.error(err.message);
   }
