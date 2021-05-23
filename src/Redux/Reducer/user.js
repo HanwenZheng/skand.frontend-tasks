@@ -1,8 +1,8 @@
-import { GET_USERS, GET_USER, DELETE_USER } from "../Action/types";
+import { GET_USERS, GET_USER, DELETE_USER, EDIT_USER } from "../Action/types";
 
 const initialState = {
   users: [],
-  editUser: {},
+  editUser: null,
 };
 
 const user = (state = initialState, action) => {
@@ -19,6 +19,7 @@ const user = (state = initialState, action) => {
         editUser: payload,
       };
     case DELETE_USER:
+    case EDIT_USER:
     default:
       return state;
   }
