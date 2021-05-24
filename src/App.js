@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import Home from "./Components/Home";
 import Landing from "./Components/Landing";
 import NavBar from "./Components/NavBar";
+import User from "./Components/User";
 import { setInitHeaders } from "./Redux/Action/auth";
 import { connect } from "react-redux";
 
@@ -24,8 +25,9 @@ const App = ({ auth, setInitHeaders }) => {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/home" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/home" component={Home} />
+        <PrivateRoute path="/home/:id" children={User} />
       </Switch>
     </div>
   );
