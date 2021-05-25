@@ -1,18 +1,21 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from "../Action/types";
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "../Action/types";
 
 const initialState = {
-  token: null,
+  token: localStorage.getItem("token"),
 };
 
 const auth = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_SUCCESS:
+      localStorage.setItem("token", payload);
       return {
         ...state,
         token: payload,
       };
     case LOGIN_FAIL:
+    case LOGOUT:
+      localStorage.removeItem("token");
       return {
         ...state,
         token: null,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_SUCCESS, LOGIN_FAIL } from "./types";
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
 
 const proxy = "/api/v2";
 
@@ -22,4 +22,10 @@ export const login = ({ email, password }) => async (dispatch) => {
       type: LOGIN_FAIL,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
 };
