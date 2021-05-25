@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Login from "./Components/Login";
 
