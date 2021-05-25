@@ -1,14 +1,15 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
+import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Components/Login";
-import Landing from "./Components/Landing";
+import Home from "./Components/Home";
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/" component={Login} />
-      <Route exact path="/Landing" component={Landing} />
+      <PrivateRoute exact path="/home" component={Home} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { login } from "../Redux/Action/auth";
 import { connect } from "react-redux";
 import axios from "axios";
-import Landing from "./Landing";
+import Landing from "./Home";
 import { Redirect } from "react-router";
 
 const SignInSchema = Yup.object().shape({
@@ -12,9 +12,9 @@ const SignInSchema = Yup.object().shape({
   password: Yup.string().min(6, "At least 6 digits!").required("Required"),
 });
 
-const Login = ({ login }) => {
-  if (localStorage.token) {
-    return <Redirect to="/Landing" />;
+const Login = ({ auth: { token }, login }) => {
+  if (token) {
+    return <Redirect to="/home" />;
   }
 
   const onGetUser = async (e) => {
@@ -61,4 +61,8 @@ const Login = ({ login }) => {
   );
 };
 
-export default connect(null, { login })(Login);
+const mapStateToProps = ({ auth }) => ({
+  auth,
+});
+
+export default connect(mapStateToProps, { login })(Login);
