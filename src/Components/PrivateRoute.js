@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, auth: { token }, ...rest }) => {
-  return <Route {...rest} render={() => (!token ? <Redirect to="/" /> : <Component />)} />;
+  return <Route {...rest} render={() => (!token ? <Redirect to="/login" /> : <Component />)} />;
 };
 
 const mapStateToProps = ({ auth }) => ({

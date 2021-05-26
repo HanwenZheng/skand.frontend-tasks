@@ -1,18 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout } from "../Redux/Action/auth";
 
-const Home = ({ logout }) => {
-  const onLogout = (e) => {
-    logout();
-  };
-
+const Home = () => {
   return (
     <div>
-      <div>Home</div>
-      <button onClick={onLogout}>Logout</button>
+      <h1>Home</h1>
     </div>
   );
 };
 
-export default connect(null, { logout })(Home);
+export default connect(null)(Home);
