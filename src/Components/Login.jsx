@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { login } from "../Redux/Action/auth";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
+import Button from "@material-ui/core/Button";
+import styles from "./SCSS/App.module.scss";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -40,7 +42,9 @@ const Login = ({ auth: { token }, login }) => {
               <Field name="password" />
               {errors.password && touched.password ? <div>{errors.password}</div> : null}
             </div>
-            <button type="submit">Submit</button>
+            <Button variant="contained" color="secondary" size="small" type="submit">
+              Log In
+            </Button>
           </Form>
         )}
       </Formik>

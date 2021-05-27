@@ -8,7 +8,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 
 const Home = ({ users, getUsers }) => {
   useEffect(() => {
@@ -49,9 +48,17 @@ const Home = ({ users, getUsers }) => {
             setActiveFilter(e.target.value);
           }}
         >
-          <FormControlLabel value="Active" control={<Radio />} label="Active" />
-          <FormControlLabel value="Inactive" control={<Radio />} label="Inactive" />
-          <FormControlLabel value="" control={<Radio />} label="Clear" />
+          <FormControlLabel
+            value="Active"
+            control={<Radio style={{ color: "#3f51b5" }} />}
+            label="Active"
+          />
+          <FormControlLabel
+            value="Inactive"
+            control={<Radio style={{ color: "#3f51b5" }} />}
+            label="Inactive"
+          />
+          <FormControlLabel value="" control={<Radio style={{ color: "grey" }} />} label="Clear" />
         </RadioGroup>
       </FormControl>
       <UserTable

@@ -1,8 +1,19 @@
 a {
   text-decoration: none;
-  color: red;
 }
 
 .App {
   position: relative;
+  font-family: "Roboto", serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  .NavBar a {
+    padding: 10px;
+  }
+
+  .logOut {
+    margin-left: 10px;
+  }
 }

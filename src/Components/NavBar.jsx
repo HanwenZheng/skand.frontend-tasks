@@ -2,6 +2,9 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../Redux/Action/auth";
+import Button from "@material-ui/core/Button";
+
+import styles from "./SCSS/App.module.scss";
 
 const NavBar = ({ auth, logout }) => {
   const style = { color: "black" };
@@ -20,12 +23,20 @@ const NavBar = ({ auth, logout }) => {
       <NavLink exact to="/home" style={style} activeStyle={activeStyle}>
         Welcome!
       </NavLink>
-      <button onClick={onLogout}>Logout</button>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        onClick={onLogout}
+        className={styles.logOut}
+      >
+        Logout
+      </Button>
     </Fragment>
   );
 
   return (
-    <div>
+    <div className={styles.NavBar}>
       <h1>NavBar</h1>
       <NavLink exact to="/" style={style} activeStyle={activeStyle}>
         Landing
