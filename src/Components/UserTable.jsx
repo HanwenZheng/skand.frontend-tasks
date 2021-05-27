@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Fragment, useState } from "react";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -96,8 +95,8 @@ const UserTable = ({ users }) => {
     });
   });
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -118,7 +117,7 @@ const UserTable = ({ users }) => {
             <TableCell>ID</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="right">Jobs Count</TableCell>
-            <TableCell align="right">Active</TableCell>
+            <TableCell align="right">Status</TableCell>
             <TableCell align="center">Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -171,8 +170,4 @@ const UserTable = ({ users }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  users: user.users,
-});
-
-export default connect(mapStateToProps)(UserTable);
+export default UserTable;
