@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import PrivateRoute from "./Components/PrivateRoute";
@@ -6,10 +6,17 @@ import Login from "./Components/Login";
 import Home from "./Components/Home";
 import Landing from "./Components/Landing";
 import NavBar from "./Components/NavBar";
+import { setInitHeaders } from "./Redux/Action/auth";
+import { connect } from "react-redux";
 
 import styles from "./Components/SCSS/App.module.scss";
 
-function App() {
+const App = ({ auth, setInitHeaders }) => {
+  useEffect(() => {
+    setInitHeaders(localStorage.token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.App}>
       <NavBar />
@@ -20,6 +27,10 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = ({ auth }) => ({
+  auth,
+});
+
+export default connect(mapStateToProps, { setInitHeaders })(App);

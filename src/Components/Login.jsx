@@ -3,7 +3,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { login } from "../Redux/Action/auth";
 import { connect } from "react-redux";
-import axios from "axios";
 import { Redirect } from "react-router";
 
 const SignInSchema = Yup.object().shape({
@@ -15,16 +14,6 @@ const Login = ({ auth: { token }, login }) => {
   if (token) {
     return <Redirect to="/home" />;
   }
-
-  const onGetUser = async (e) => {
-    const config = {
-      headers: {
-        authorization: localStorage.token,
-      },
-    };
-    const res = await axios.get("/api/v2/users", config);
-    console.log(res);
-  };
 
   return (
     <div>
@@ -55,7 +44,6 @@ const Login = ({ auth: { token }, login }) => {
           </Form>
         )}
       </Formik>
-      <button onClick={onGetUser}>getUsers</button>
     </div>
   );
 };
