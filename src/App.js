@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Components/Login";
@@ -19,6 +20,7 @@ const App = ({ auth, setInitHeaders }) => {
 
   return (
     <div className={styles.App}>
+      <Toaster />
       <NavBar />
       <Switch>
         <Route exact path="/" component={Landing} />

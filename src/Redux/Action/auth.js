@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
+import { toast } from "react-hot-toast";
 
 const proxy = "/api/v2";
 
@@ -18,8 +19,8 @@ export const login = ({ email, password }) => async (dispatch) => {
       payload: res.headers.authorization,
     });
   } catch (err) {
-    console.error(err.message);
     delete axios.defaults.headers.common["authorization"];
+    toast.error("Invalid credentials!");
     dispatch({
       type: LOGIN_FAIL,
     });
