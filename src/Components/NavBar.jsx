@@ -21,7 +21,7 @@ const NavBar = ({ auth, logout }) => {
   ) : (
     <Fragment>
       <NavLink exact to="/home" style={style} activeStyle={activeStyle}>
-        Welcome!
+        Hi, test1@skand.io !
       </NavLink>
       <Button
         variant="contained"

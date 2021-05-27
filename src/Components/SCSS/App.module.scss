@@ -9,11 +9,17 @@ a {
   margin: 0 auto;
   padding: 0 20px;
 
-  .NavBar a {
-    padding: 10px;
+  .NavBar {
+    a {
+      padding-right: 20px;
+      font-size: 20px;
+    }
+    .logOut {
+      transform: translateY(-2px);
+    }
   }
 
-  .logOut {
-    margin-left: 10px;
+  .input {
+    margin: 15px 0;
   }
 }

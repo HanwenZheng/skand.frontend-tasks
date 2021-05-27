@@ -32,14 +32,12 @@ const Login = ({ auth: { token }, login }) => {
       >
         {({ errors, touched }) => (
           <Form>
-            <div>
-              Email:
-              <Field name="email" type="email" />
+            <div className={styles.input}>
+              Email <Field name="email" type="email" autoFocus autoComplete="off" />
               {errors.email && touched.email ? <div>{errors.email}</div> : null}
             </div>
-            <div>
-              Password:
-              <Field name="password" />
+            <div className={styles.input}>
+              Password <Field name="password" autoComplete="off" />
               {errors.password && touched.password ? <div>{errors.password}</div> : null}
             </div>
             <Button variant="contained" color="secondary" size="small" type="submit">

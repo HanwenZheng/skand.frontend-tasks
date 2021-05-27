@@ -29,6 +29,7 @@ const Home = ({ users, getUsers }) => {
           id="emailFilter"
           label="Filter by Email"
           variant="outlined"
+          size="small"
           value={emailFilter}
           onChange={(e) => {
             setEmailFilter(e.target.value);
@@ -37,7 +38,7 @@ const Home = ({ users, getUsers }) => {
       </form>
       <FormControl
         component="fieldset"
-        style={{ height: "50px", display: "flex", justifyContent: "center" }}
+        style={{ height: "60px", display: "flex", justifyContent: "center" }}
       >
         <RadioGroup
           row
