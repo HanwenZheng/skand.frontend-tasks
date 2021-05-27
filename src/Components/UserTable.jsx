@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from "react";
+import { deleteUser } from "../Redux/Action/user";
+import { connect } from "react-redux";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,7 +12,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-
 import TableFooter from "@material-ui/core/TableFooter";
 import TablePagination from "@material-ui/core/TablePagination";
 import IconButton from "@material-ui/core/IconButton";
@@ -19,7 +20,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 
-const UserTable = ({ users }) => {
+const UserTable = ({ users, deleteUser }) => {
   const Styles = makeStyles((theme) => ({
     table: {
       minWidth: 650,
@@ -141,7 +142,7 @@ const UserTable = ({ users }) => {
                 >
                   <Button>View</Button>
                   <Button>Edit</Button>
-                  <Button>Delete</Button>
+                  <Button onClick={(e) => deleteUser(row.id)}>Delete</Button>
                 </ButtonGroup>
               </TableCell>
             </TableRow>
@@ -170,4 +171,4 @@ const UserTable = ({ users }) => {
   );
 };
 
-export default UserTable;
+export default connect(null, { deleteUser })(UserTable);

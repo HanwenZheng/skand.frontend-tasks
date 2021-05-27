@@ -27,7 +27,12 @@ export const login = ({ email, password }) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => async (dispatch) => {
+  try {
+    await axios.delete(proxy + "/users/tokens");
+  } catch (err) {
+    console.error(err.message);
+  }
   dispatch({
     type: LOGOUT,
   });
