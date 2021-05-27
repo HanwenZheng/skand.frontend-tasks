@@ -4,23 +4,48 @@ import { Link, Redirect, withRouter } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
 
+import styles from "./SCSS/App.module.scss";
+
 const User = ({ match, users }) => {
   const id = match.params.id;
   const user = users.find((user) => user.id === id);
   if (users.length && !user) return <Redirect to="/home" />;
 
   return (
-    <Fragment>
+    <div className={styles.User}>
       <h1>User Details</h1>
       {user && (
         <Fragment>
-          <p>Email: {user.email}</p>
-          <p>Username: {user.slack_username}</p>
-          <p>First Name: {user.first_name}</p>
-          <p>Last Name: {user.last_name}</p>
-          <p>Total Jobs: {user.jobs_count}</p>
-          <p>Status: {user.active ? "Active" : "Inactive"}</p>
-          <p>ID: {user.id}</p>
+          <p>
+            <span>Email: </span>
+            {user.email}
+          </p>
+          <p>
+            <span>Username: </span>
+            {user.slack_username}
+          </p>
+          <div />
+          <p>
+            <span>First Name: </span>
+            {user.first_name}
+          </p>
+          <p>
+            <span>Last Name: </span>
+            {user.last_name}
+          </p>
+          <div />
+          <p>
+            <span>Total Jobs: </span>
+            {user.jobs_count}
+          </p>
+          <p>
+            <span>Status: </span>
+            {user.active ? "Active" : "Inactive"}
+          </p>
+          <p>
+            <span>ID: </span>
+            {user.id}
+          </p>
         </Fragment>
       )}
       <Link to="/home" style={{ color: "white" }}>
@@ -28,7 +53,7 @@ const User = ({ match, users }) => {
           Back to home
         </Button>
       </Link>
-    </Fragment>
+    </div>
   );
 };
 

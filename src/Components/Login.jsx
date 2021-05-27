@@ -18,7 +18,7 @@ const Login = ({ auth: { token }, login }) => {
   }
 
   return (
-    <div>
+    <div className={styles.Login}>
       <h1>Login</h1>
       <Formik
         initialValues={{

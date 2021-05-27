@@ -19,7 +19,19 @@ a {
     }
   }
 
-  .input {
+  .Login .input {
     margin: 15px 0;
+  }
+
+  .User {
+    span {
+      display: inline-block;
+      min-width: 100px;
+    }
+    div {
+      border: 1px solid #3f51b5;
+      width: 40vw;
+      min-width: 400px;
+    }
   }
 }
