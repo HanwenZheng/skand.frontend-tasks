@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import UserTable from "./UserList";
 import { getUsers } from "../Redux/Action/user";
+import UserTable from "./UserList";
 
 import { TextField, Radio, RadioGroup, FormControlLabel, FormControl } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import styles from "./SCSS/App.module.scss";
 
 const Home = ({ users, getUsers }) => {
   useEffect(() => {
@@ -19,7 +22,14 @@ const Home = ({ users, getUsers }) => {
   const [activeFilter, setActiveFilter] = useState("");
 
   return (
-    <div>
+    <div className={styles.Home}>
+      <div className={styles.createUser}>
+        <Link to="/create" style={{ color: "white" }}>
+          <Button variant="contained" color="secondary" size="small">
+            Create User
+          </Button>
+        </Link>
+      </div>
       <h1>Users</h1>
       <form noValidate autoComplete="off">
         <TextField

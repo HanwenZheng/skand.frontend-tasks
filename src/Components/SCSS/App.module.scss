@@ -27,6 +27,16 @@ a {
     }
   }
 
+  .Home {
+    position: relative;
+    .createUser {
+      position: absolute;
+      top: 100px;
+      right: 40px;
+      z-index: 1;
+    }
+  }
+
   .User {
     span {
       display: inline-block;
