@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_USERS, GET_USER, DELETE_USER, EDIT_USER } from "./types";
+import { GET_USERS, GET_USER, DELETE_USER, EDIT_USER, CREATE_USER, CLEAR_EDIT } from "./types";
 
 const proxy = "/api/v2";
 
@@ -44,6 +44,23 @@ export const editUser = (id, edit) => async (dispatch) => {
   }
 };
 
+export const createUser = (edit) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify(edit);
+  try {
+    await axios.post(proxy + "/users", body, config);
+    dispatch({
+      type: CREATE_USER,
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 export const deleteUser = (userId) => async (dispatch) => {
   try {
     await axios.delete(proxy + `/users/${userId}`);
@@ -54,4 +71,10 @@ export const deleteUser = (userId) => async (dispatch) => {
   } catch (err) {
     console.error(err.message);
   }
+};
+
+export const clearEdit = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_EDIT,
+  });
 };
