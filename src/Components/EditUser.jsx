@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import { getUser, editUser } from "../Redux/Action/user";
+import { getUser, editUser, createUser, clearEdit } from "../Redux/Action/user";
 
 import Button from "@material-ui/core/Button";
 import styles from "./SCSS/App.module.scss";
@@ -18,11 +18,16 @@ const UserSchema = Yup.object().shape({
   slack_username: Yup.string().required("Required"),
 });
 
-const EditUser = ({ user, getUser, editUser, match, history }) => {
+const EditUser = ({ user, getUser, editUser, createUser, clearEdit, match, history }) => {
+  const [create, setCreate] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      getUser(match.params.id);
-    }, 0);
+    if (match.path.includes("/create")) {
+      setCreate(true);
+    } else {
+      setTimeout(() => {
+        getUser(match.params.id);
+      }, 0);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -38,14 +43,23 @@ const EditUser = ({ user, getUser, editUser, match, history }) => {
       }}
       validationSchema={UserSchema}
       onSubmit={({ email, first_name, last_name, jobs_count, slack_username, active }) => {
-        editUser(match.params.id, {
-          email,
-          first_name,
-          last_name,
-          jobs_count,
-          slack_username,
-          active,
-        });
+        create
+          ? createUser({
+              email,
+              first_name,
+              last_name,
+              jobs_count,
+              slack_username,
+              active,
+            })
+          : editUser(match.params.id, {
+              email,
+              first_name,
+              last_name,
+              jobs_count,
+              slack_username,
+              active,
+            });
         history.push("/home");
       }}
     >
@@ -85,13 +99,19 @@ const EditUser = ({ user, getUser, editUser, match, history }) => {
             </label>
           </div>
           <Link to="/home" style={{ color: "white" }}>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                clearEdit();
+              }}
+            >
               Go Back
             </Button>
           </Link>
           <span> </span>
           <Button variant="contained" color="secondary" type="submit">
-            Save Profile
+            {create ? "Create User" : "Save Profile"}
           </Button>
         </Form>
       )}
@@ -110,4 +130,6 @@ const mapStateToProps = ({ user }) => ({
   user,
 });
 
-export default connect(mapStateToProps, { getUser, editUser })(withRouter(EditUser));
+export default connect(mapStateToProps, { getUser, editUser, createUser, clearEdit })(
+  withRouter(EditUser)
+);

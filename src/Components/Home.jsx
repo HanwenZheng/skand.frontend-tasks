@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { getUsers } from "../Redux/Action/user";
-import UserTable from "./UserList";
+import UserList from "./UserList";
 
 import { TextField, Radio, RadioGroup, FormControlLabel, FormControl } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -69,7 +69,7 @@ const Home = ({ users, getUsers }) => {
           <FormControlLabel value="" control={<Radio style={{ color: "grey" }} />} label="Clear" />
         </RadioGroup>
       </FormControl>
-      <UserTable
+      <UserList
         users={users.filter(
           (user) =>
             user.email.includes(emailFilter) &&

@@ -30,6 +30,7 @@ const App = ({ setInitHeaders }) => {
         <PrivateRoute exact path="/home" component={Home} />
         <PrivateRoute exact path="/home/:id" component={User} />
         <PrivateRoute exact path="/home/:id/edit" component={EditUser} />
+        <PrivateRoute exact path="/create" component={EditUser} />
       </Switch>
     </div>
   );
