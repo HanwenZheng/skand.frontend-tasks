@@ -11,7 +11,7 @@ export const getUsers = () => async (dispatch) => {
       payload: res.data.users,
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 };
 
@@ -23,7 +23,7 @@ export const getUser = (id) => async (dispatch) => {
       payload: res.data.users,
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 };
 
@@ -40,7 +40,7 @@ export const editUser = (id, edit) => async (dispatch) => {
       type: EDIT_USER,
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 };
 
@@ -57,7 +57,7 @@ export const createUser = (edit) => async (dispatch) => {
       type: CREATE_USER,
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 };
 
@@ -69,7 +69,7 @@ export const deleteUser = (userId) => async (dispatch) => {
     });
     dispatch(getUsers());
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
 };
 

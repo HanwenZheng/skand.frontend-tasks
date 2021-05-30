@@ -19,7 +19,7 @@ export const login = ({ email, password }) => async (dispatch) => {
       payload: res.headers.authorization,
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     delete axios.defaults.headers.common["authorization"];
     toast.error("Invalid credentials!");
     dispatch({
@@ -32,7 +32,7 @@ export const logout = () => async (dispatch) => {
   try {
     await axios.delete(proxy + "/users/tokens");
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
   }
   dispatch({
     type: LOGOUT,
