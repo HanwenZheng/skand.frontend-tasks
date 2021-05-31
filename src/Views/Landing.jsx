@@ -1,6 +1,7 @@
+// node
 import React from "react";
 import { Link } from "react-router-dom";
-
+// style
 import Button from "@material-ui/core/Button";
 
 const Landing = (props) => {

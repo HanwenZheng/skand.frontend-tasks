@@ -1,13 +1,15 @@
+// node
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-
-import { logout } from "../Redux/Action/auth";
-
+// local
+import { logout } from "../../Redux/Action/auth";
+// style
 import Button from "@material-ui/core/Button";
-import styles from "./SCSS/App.module.scss";
+import styles from "../SCSS/App.module.scss";
 
 const NavBar = ({ auth, logout }) => {
+  // CSS-in-JS NavLink
   const style = { color: "black" };
   const activeStyle = { fontWeight: "bold", color: "black", textDecoration: "none" };
 
@@ -15,6 +17,7 @@ const NavBar = ({ auth, logout }) => {
     logout();
   };
 
+  // set welcome message based on ?logged-in
   const login = !auth.token ? (
     <NavLink exact to="/login" style={style} activeStyle={activeStyle}>
       Get Started

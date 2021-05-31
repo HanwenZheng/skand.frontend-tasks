@@ -1,13 +1,14 @@
+// node
 import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
-
+// local
 import { login } from "../Redux/Action/auth";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
-
+// style
 import Button from "@material-ui/core/Button";
-import styles from "./SCSS/App.module.scss";
+import styles from "../Components/SCSS/App.module.scss";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -15,6 +16,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 const Login = ({ auth: { token }, login }) => {
+  // redirect logged-in user: /login -> /home
   if (token) {
     return <Redirect to="/home" />;
   }
@@ -23,6 +25,7 @@ const Login = ({ auth: { token }, login }) => {
     <div className={styles.Login}>
       <h1>Login</h1>
       <Formik
+        // default value for testing
         initialValues={{
           email: "test@skand.io",
           password: "password",

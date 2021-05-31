@@ -1,23 +1,25 @@
+// node
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+// local
 import { getUsers } from "../Redux/Action/user";
-import UserList from "./UserList";
-
+import UserTable from "../Components/UserTable";
+// style
 import { TextField, Radio, RadioGroup, FormControlLabel, FormControl } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import styles from "./SCSS/App.module.scss";
+import styles from "../Components/SCSS/App.module.scss";
 
 const Home = ({ users, getUsers }) => {
   useEffect(() => {
-    // to-do: ?
+    // TODO: why this works
     setTimeout(() => {
       getUsers();
     }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // state for filters
   const [emailFilter, setEmailFilter] = useState("");
   const [activeFilter, setActiveFilter] = useState("");
 
@@ -31,7 +33,8 @@ const Home = ({ users, getUsers }) => {
         </Link>
       </div>
       <h1>Users</h1>
-      <form noValidate autoComplete="off">
+      {/*Controlled Email filter*/}
+      <form autoComplete="off">
         <TextField
           id="emailFilter"
           label="Filter by Email"
@@ -43,6 +46,7 @@ const Home = ({ users, getUsers }) => {
           }}
         />
       </form>
+      {/*Controlled Status filter*/}
       <FormControl
         component="fieldset"
         style={{ height: "60px", display: "flex", justifyContent: "center" }}
@@ -69,7 +73,8 @@ const Home = ({ users, getUsers }) => {
           <FormControlLabel value="" control={<Radio style={{ color: "grey" }} />} label="Clear" />
         </RadioGroup>
       </FormControl>
-      <UserList
+      {/*render UserTable with filtered users data*/}
+      <UserTable
         users={users.filter(
           (user) =>
             user.email.includes(emailFilter) &&

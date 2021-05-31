@@ -1,8 +1,9 @@
+// node
 import React, { Fragment, useState } from "react";
 import { deleteUser } from "../Redux/Action/user";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+// style
 import {
   makeStyles,
   useTheme,
@@ -24,7 +25,8 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 
-const UserList = ({ users, deleteUser }) => {
+// Used in Home, to display a table based on props.users
+const UserTable = ({ users, deleteUser }) => {
   const Styles = makeStyles(() => ({
     table: {
       minWidth: 650,
@@ -183,4 +185,4 @@ const UserList = ({ users, deleteUser }) => {
   );
 };
 
-export default connect(null, { deleteUser })(UserList);
+export default connect(null, { deleteUser })(UserTable);

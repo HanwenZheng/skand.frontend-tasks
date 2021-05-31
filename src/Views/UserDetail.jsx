@@ -1,11 +1,12 @@
+// node
 import React, { Fragment, useEffect } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
+// local
 import { getUsers } from "../Redux/Action/user";
-
+// style
 import Button from "@material-ui/core/Button";
-import styles from "./SCSS/App.module.scss";
+import styles from "../Components/SCSS/App.module.scss";
 
 const UserDetail = ({ match, users, getUsers }) => {
   useEffect(() => {
@@ -15,6 +16,8 @@ const UserDetail = ({ match, users, getUsers }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // lazy-load user by user_id
+  // users load && user not found -> redirect to /home
   const id = match.params.id;
   let user = users.find((user) => user.id === id);
   if (users.length && !user) return <Redirect to="/home" />;

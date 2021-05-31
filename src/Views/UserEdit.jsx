@@ -1,13 +1,14 @@
+// node
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-
+// local
 import { getUser, editUser, createUser, clearEdit } from "../Redux/Action/user";
-
+// style
 import Button from "@material-ui/core/Button";
-import styles from "./SCSS/App.module.scss";
+import styles from "../Components/SCSS/App.module.scss";
 import { Link } from "react-router-dom";
 
 const UserSchema = Yup.object().shape({
@@ -18,12 +19,15 @@ const UserSchema = Yup.object().shape({
   slack_username: Yup.string().required("Required"),
 });
 
-const EditUser = ({ user, getUser, editUser, createUser, clearEdit, match, history }) => {
-  const [create, setCreate] = useState(false);
+const UserEdit = ({ user, getUser, editUser, createUser, clearEdit, match, history }) => {
+  // state for Create/Edit user
+  const [createMode, setCreateMode] = useState(false);
   useEffect(() => {
     if (match.path.includes("/create")) {
-      setCreate(true);
+      // set createMode
+      setCreateMode(true);
     } else {
+      // get user and set user.editUser
       setTimeout(() => {
         getUser(match.params.id);
       }, 0);
@@ -43,7 +47,7 @@ const EditUser = ({ user, getUser, editUser, createUser, clearEdit, match, histo
       }}
       validationSchema={UserSchema}
       onSubmit={({ email, first_name, last_name, jobs_count, slack_username, active }) => {
-        create
+        createMode
           ? createUser({
               email,
               first_name,
@@ -111,7 +115,7 @@ const EditUser = ({ user, getUser, editUser, createUser, clearEdit, match, histo
           </Link>
           <span> </span>
           <Button variant="contained" color="secondary" type="submit">
-            {create ? "Create User" : "Save Profile"}
+            {createMode ? "Create User" : "Save Profile"}
           </Button>
         </Form>
       )}
@@ -131,5 +135,5 @@ const mapStateToProps = ({ user }) => ({
 });
 
 export default connect(mapStateToProps, { getUser, editUser, createUser, clearEdit })(
-  withRouter(EditUser)
+  withRouter(UserEdit)
 );
