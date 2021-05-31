@@ -9,14 +9,14 @@ import Login from "./Components/Login";
 import Home from "./Components/Home";
 import User from "./Components/UserDetail";
 import EditUser from "./Components/EditUser";
-import { setInitHeaders } from "./Redux/Action/auth";
+import { initHeadersFromStorage } from "./Redux/Action/auth";
 import PrivateRoute from "./Components/PrivateRoute";
 
 import styles from "./Components/SCSS/App.module.scss";
 
-const App = ({ setInitHeaders }) => {
+const App = ({ initHeadersFromStorage }) => {
   useEffect(() => {
-    setInitHeaders(localStorage.token);
+    initHeadersFromStorage(localStorage.token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -36,4 +36,4 @@ const App = ({ setInitHeaders }) => {
   );
 };
 
-export default connect(null, { setInitHeaders })(App);
+export default connect(null, { initHeadersFromStorage })(App);
