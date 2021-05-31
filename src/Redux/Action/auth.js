@@ -6,8 +6,8 @@ const proxy = "/api/v2";
 
 // Login (Action)
 // path: POST /users/tokens
-// login success -> set axios Header, save Token to Local Storage
-// login fail -> remove axios Header, remove Token from Local Storage
+// LOGIN_SUCCESS -> set axios Header, save Token to Local Storage
+// LOGIN_FAIL -> remove axios Header, remove Token from Local Storage
 export const login = ({ email, password }) => async (dispatch) => {
   const config = {
     headers: {
@@ -34,7 +34,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 
 // Logout (Action)
 // path: DELETE /users/tokens
-// -> remove axios Header, remove Token from Local Storage
+// LOGOUT -> remove axios Header, remove Token from Local Storage
 export const logout = () => async (dispatch) => {
   try {
     await axios.delete(proxy + "/users/tokens");

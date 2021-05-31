@@ -7,6 +7,8 @@ import {
   CLEAR_EDIT,
 } from "../Action/types";
 
+// users: All users data :Array[Object:user]
+// editUser: Current editing user data :Object:user
 const initialState = {
   users: [],
   editUser: null,

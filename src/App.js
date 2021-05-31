@@ -1,17 +1,18 @@
+// node
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { Route, Switch } from "react-router-dom";
-
-import NavBar from "./Components/NavBar";
-import Landing from "./Components/Landing";
-import Login from "./Components/Login";
-import Home from "./Components/Home";
-import User from "./Components/UserDetail";
-import EditUser from "./Components/EditUser";
+// local
+import NavBar from "./Components/Layout/NavBar";
+import Landing from "./Views/Landing";
+import Login from "./Views/Login";
+import Home from "./Views/Home";
+import UserDetail from "./Views/UserDetail";
+import UserEdit from "./Views/UserEdit";
 import { initHeadersFromStorage } from "./Redux/Action/auth";
-import PrivateRoute from "./Components/PrivateRoute";
-
+import PrivateRoute from "./Components/Middleware/PrivateRoute";
+// style
 import styles from "./Components/SCSS/App.module.scss";
 
 const App = ({ initHeadersFromStorage }) => {
@@ -28,9 +29,9 @@ const App = ({ initHeadersFromStorage }) => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/home" component={Home} />
-        <PrivateRoute exact path="/home/:id" component={User} />
-        <PrivateRoute exact path="/home/:id/edit" component={EditUser} />
-        <PrivateRoute exact path="/create" component={EditUser} />
+        <PrivateRoute exact path="/home/:id" component={UserDetail} />
+        <PrivateRoute exact path="/home/:id/edit" component={UserEdit} />
+        <PrivateRoute exact path="/create" component={UserEdit} />
       </Switch>
     </div>
   );

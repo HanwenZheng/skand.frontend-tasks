@@ -3,6 +3,8 @@ import { GET_USERS, GET_USER, DELETE_USER, EDIT_USER, CREATE_USER, CLEAR_EDIT } 
 
 const proxy = "/api/v2";
 
+// path: GET /users
+// GET_USERS -> save all users data
 export const getUsers = () => async (dispatch) => {
   try {
     const res = await axios.get(proxy + "/users");
@@ -15,6 +17,8 @@ export const getUsers = () => async (dispatch) => {
   }
 };
 
+// path: GET /users/:id
+// GET_USER -> request and save user data by user_id
 export const getUser = (id) => async (dispatch) => {
   try {
     const res = await axios.get(proxy + `/users/${id}`);
@@ -27,6 +31,8 @@ export const getUser = (id) => async (dispatch) => {
   }
 };
 
+// path: PATCH /users/:id
+// EDIT_USER -> save edit and clear editUser
 export const editUser = (id, edit) => async (dispatch) => {
   const config = {
     headers: {
@@ -44,6 +50,8 @@ export const editUser = (id, edit) => async (dispatch) => {
   }
 };
 
+// path: POST /users
+// CREATE_USER -> save edit and clear editUser
 export const createUser = (edit) => async (dispatch) => {
   const config = {
     headers: {
@@ -61,6 +69,8 @@ export const createUser = (edit) => async (dispatch) => {
   }
 };
 
+// path: DELETE /users/:id
+// DELETE_USER -> delete user by user_id
 export const deleteUser = (userId) => async (dispatch) => {
   try {
     await axios.delete(proxy + `/users/${userId}`);
@@ -73,6 +83,7 @@ export const deleteUser = (userId) => async (dispatch) => {
   }
 };
 
+// CLEAR_EDIT -> discard edit and clear editUser
 export const clearEdit = () => async (dispatch) => {
   dispatch({
     type: CLEAR_EDIT,

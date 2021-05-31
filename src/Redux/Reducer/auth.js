@@ -1,5 +1,6 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "../Action/types";
 
+// token: keep token in Redux & Local Storage :String
 const initialState = {
   token: localStorage.getItem("token"),
 };
